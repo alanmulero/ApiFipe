@@ -1,4 +1,4 @@
-package com.fipe.ApiFipe.module;
+package com.fipe.ApiFipe.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
