@@ -1,6 +1,7 @@
 package com.fipe.ApiFipe;
 
 import com.fipe.ApiFipe.model.Marca;
+import com.fipe.ApiFipe.model.Modelo;
 import com.fipe.ApiFipe.model.Tipo;
 import com.fipe.ApiFipe.service.Conexao;
 import com.fipe.ApiFipe.service.ConverteDadosEmJson;
@@ -20,7 +21,7 @@ public class ApiFipeApplication implements CommandLineRunner {
 		// START:
 
 		Conexao conexao = new Conexao();
-		var json = conexao.obterDados("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/anos/2014-3");
+		var json = conexao.obterDados("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/");
 		System.out.println(json);
 		// Convertido em json
 		ConverteDadosEmJson converteDadosEmJson = new ConverteDadosEmJson();
@@ -30,7 +31,9 @@ public class ApiFipeApplication implements CommandLineRunner {
 		Marca marca = converteDadosEmJson.converteDados(json, Marca.class);
 		System.out.println(marca);
 
-
+		json = conexao.obterDados("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos");
+		Modelo modelo = converteDadosEmJson.converteDados(json, Modelo.class);
+		System.out.println(modelo);
 	}
 
 }
