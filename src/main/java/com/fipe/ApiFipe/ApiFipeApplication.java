@@ -19,21 +19,8 @@ public class ApiFipeApplication implements CommandLineRunner {
 	public static void main(String[] args)  {
 		SpringApplication.run(ApiFipeApplication.class, args);
 		// START:
-
-		Conexao conexao = new Conexao();
-		var json = conexao.obterDados("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/5940/");
-		System.out.println(json);
-		// Convertido em json
-		ConverteDadosEmJson converteDadosEmJson = new ConverteDadosEmJson();
-		Tipo tipo = converteDadosEmJson.converteDados(json, Tipo.class);
-		System.out.println(tipo);
-
-		Marca marca = converteDadosEmJson.converteDados(json, Marca.class);
-		System.out.println(marca);
-
-		json = conexao.obterDados("https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos");
-		Modelo modelo = converteDadosEmJson.converteDados(json, Modelo.class);
-		System.out.println(modelo);
+		Principal principal = new Principal();
+		principal.menu();
 	}
 
 }
