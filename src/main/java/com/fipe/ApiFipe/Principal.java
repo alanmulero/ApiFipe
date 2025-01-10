@@ -1,12 +1,16 @@
 package com.fipe.ApiFipe;
 
+import com.fipe.ApiFipe.model.Dados;
 import com.fipe.ApiFipe.service.Conexao;
+import com.fipe.ApiFipe.service.ConverteDadosEmJson;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Principal {
 
     Conexao conexao = new Conexao();
+    ConverteDadosEmJson conversor = new ConverteDadosEmJson();
     Scanner leitura = new Scanner(System.in);
     private int carro = 1;
     private int moto = 2;
@@ -25,10 +29,11 @@ public class Principal {
                     """;
             System.out.println(opcao);
             System.out.println("Escolha sua alternativa");
+            try{
             var resposta = leitura.nextInt();
             if(resposta == 1){
                 endereco = URL_BASE + "carros/marcas";
-                System.out.println("Escolha um modelo");
+
 
             } else if (resposta == 2) {
                 endereco = URL_BASE + "motos/marcas";
@@ -41,11 +46,33 @@ public class Principal {
                 sair = 0;
                 System.exit(0);
             }
+            } catch (RuntimeException e) {
+                System.out.println("Entrada inválida! Digite um número de 1 até 3, ou 0 para sair. => " + e.getMessage());
+            }
             // Conectando a uma Api:
             var json = conexao.obterDados(endereco);
             System.out.println(json);
+            var marcas = conversor.converteListDados(json, Dados.class);
+            marcas.stream()
+                    .sorted(Comparator.comparing(Dados::codigo))
+                    .forEach(System.out::println);
+
+
+
+
 
         }
+
+//         Método para escolha do modelo:
+//        public  static void modelo(){
+//            var escolhaModelo = """
+//                    Digite o número de um codigo para escolher o modelo.
+//                    """;
+//            System.out.println(escolhaModelo);
+//            System.out.println("Escolha um modelo: ");
+//            var respostaModelo = leitura.nextLine();
+//            System.out.println(respostaModelo);
+//        }
 
 
 

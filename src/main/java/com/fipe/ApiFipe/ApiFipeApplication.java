@@ -1,8 +1,6 @@
 package com.fipe.ApiFipe;
 
-import com.fipe.ApiFipe.model.Marca;
-import com.fipe.ApiFipe.model.Modelo;
-import com.fipe.ApiFipe.model.Tipo;
+import com.fipe.ApiFipe.model.Dados;
 import com.fipe.ApiFipe.service.Conexao;
 import com.fipe.ApiFipe.service.ConverteDadosEmJson;
 import org.springframework.boot.CommandLineRunner;
@@ -18,9 +16,15 @@ public class ApiFipeApplication implements CommandLineRunner {
 
 	public static void main(String[] args)  {
 		SpringApplication.run(ApiFipeApplication.class, args);
-		// START:
+		 //START:
 		Principal principal = new Principal();
 		principal.menu();
+
+
+
+
+
+
 	}
 
 }
