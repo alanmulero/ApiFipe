@@ -7,4 +7,6 @@ import java.util.List;
 
 
 public record Modelo(String codigo, String nome) {
+
+
 }
