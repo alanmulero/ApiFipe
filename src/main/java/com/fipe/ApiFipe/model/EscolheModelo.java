@@ -10,9 +10,9 @@ public class EscolheModelo {
     ConverteDadosEmJson conversor = new ConverteDadosEmJson();
 
     public String  nomeModelo(String endereco){
-        System.out.println("Digite o código de um veiculo para busca.");
+        System.out.println("Digite o código de uma marca para busca.");
         var resposta = scanner.nextLine();
-        var modeloEscolhido = endereco +"/"+ resposta + "/modelos";
+        String modeloEscolhido = endereco +"/"+ resposta + "/modelos";
         System.out.println(modeloEscolhido);
         return modeloEscolhido;
     }
